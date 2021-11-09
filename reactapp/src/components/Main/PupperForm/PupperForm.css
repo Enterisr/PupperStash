@@ -1,0 +1,11 @@
+
+.newPupper_button{
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: .7rem;
+    font-weight:lighter;
+    font-family: Calibri;
+    cursor: pointer;
+    border:solid crimson;
+}
