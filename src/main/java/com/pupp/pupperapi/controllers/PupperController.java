@@ -27,10 +27,8 @@ public class PupperController {
         return pupperService.GetRandomPupper();
     }
 
-    @RequestMapping(value="/pupper/{name}/image",method= RequestMethod.GET,produces = MediaType.IMAGE_JPEG_VALUE)
-    public void getPupperImage(HttpServletResponse response) throws IOException{
-        var imgFile  = new ClassPathResource("assets/riko.jpg");
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-        StreamUtils.copy(imgFile.getInputStream(),response.getOutputStream());
+    @RequestMapping(value="/pupper/{pupperName}/image",method= RequestMethod.GET,produces = MediaType.IMAGE_JPEG_VALUE)
+    public void getPupperImage(HttpServletResponse response,@PathVariable String pupperName) throws IOException{
+         pupperService.getPupperImage(pupperName,response);
     }
 }

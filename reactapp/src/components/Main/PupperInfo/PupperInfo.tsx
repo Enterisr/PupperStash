@@ -10,14 +10,16 @@ interface IPupperInfoProps{
     pupper:Pupper
 }
 export default function PupperInfo(props:IPupperInfoProps) {
-    return (
 
+    return (
         <section className={"pupperInfo_section"}>
 
-            <div>
+            <div className={"pupperInfo_div"}>
                 {props.pupper.name}|
                 {props.pupper.age}
+
             </div>
+        <img src={`http://localhost:8080/pupper/${props.pupper.name}/image`}/>
         </section>
     );
 }

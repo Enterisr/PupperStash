@@ -16,10 +16,15 @@ function Main() {
             .then((pupper)=>setWatchedPupper(pupper));
     }
     return (
+        <>
+        <header>
+            <h1 className={"title_h1"}>PupperHub</h1>
+        </header>
         <main>
+
             <PupperInfo pupper={watchedPupper}/>
             <PupperForm getRandomPupper={getRandomPupper}/>
-        </main>
+        </main></>
     )
 }
 

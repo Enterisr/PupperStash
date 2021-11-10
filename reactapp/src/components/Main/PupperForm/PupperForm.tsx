@@ -5,7 +5,12 @@ interface Iprops{
     getRandomPupper:MouseEventHandler<HTMLButtonElement>
 }
 function PupperForm(props:Iprops) {
-    return (<button onClick={props.getRandomPupper} className={"newPupper_button"}>new pupper 🐕 </button>);
+    return (
+        <div>
+            <button onClick={props.getRandomPupper} className={"newPupper_button"}>see new pupper 🐕 </button>
+            <button className={"addNewPupper_button"}>+</button>
+        </div>
+    );
 
 }
 
