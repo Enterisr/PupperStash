@@ -36,4 +36,7 @@ public class PupperService {
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         StreamUtils.copy(imgFile.getInputStream(),response.getOutputStream());
     }
+    public List<Pupper> GetAllPuppers() {
+        return puppers;
+    }
 }

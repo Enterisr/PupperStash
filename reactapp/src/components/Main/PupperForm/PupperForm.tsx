@@ -1,17 +1,16 @@
-import React, {MouseEventHandler, useEffect, useState} from 'react';
-import logo from './logo.svg';
-import './PupperForm.css';
-interface Iprops{
-    getRandomPupper:MouseEventHandler<HTMLButtonElement>
-}
-function PupperForm(props:Iprops) {
-    return (
-        <div>
-            <button onClick={props.getRandomPupper} className={"newPupper_button"}>see new pupper 🐕 </button>
-            <button className={"addNewPupper_button"}>+</button>
-        </div>
-    );
+import React, { MouseEventHandler } from "react";
+import { AddPupperButton } from "./PupperForm.style.js";
+import { FaPlus } from "react-icons/fa";
 
+interface Iprops {}
+function PupperForm(props: Iprops) {
+  return (
+    <div>
+      <AddPupperButton className={"addNewPupper_button"}>
+        <FaPlus color="white" size={"100%"} />
+      </AddPupperButton>
+    </div>
+  );
 }
 
 export default PupperForm;

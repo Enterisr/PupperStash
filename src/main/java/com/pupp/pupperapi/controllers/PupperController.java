@@ -3,14 +3,11 @@ package com.pupp.pupperapi.controllers;
 import com.pupp.pupperapi.Models.Pupper;
 import com.pupp.pupperapi.Services.PupperService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -22,13 +19,17 @@ public class PupperController {
     private PupperService pupperService;
 
 
-    @GetMapping("/pupper")
+    @GetMapping("/pupper/random")
     public Pupper GetPupper(){
         return pupperService.GetRandomPupper();
     }
-
+    @GetMapping("/pupper")
+    public List<Pupper> GetPuppers(){
+        return pupperService.GetAllPuppers();
+    }
     @RequestMapping(value="/pupper/{pupperName}/image",method= RequestMethod.GET,produces = MediaType.IMAGE_JPEG_VALUE)
     public void getPupperImage(HttpServletResponse response,@PathVariable String pupperName) throws IOException{
          pupperService.getPupperImage(pupperName,response);
     }
+    
 }

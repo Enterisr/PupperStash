@@ -1,25 +1,32 @@
-import React from 'react';
-import './PupperInfo.css';
+import { IoMdRefreshCircle } from "react-icons/io";
+import React, { MouseEventHandler } from "react";
+import "./PupperInfo.style.js";
+import {
+  NewPupperButton,
+  PupperImage,
+  PupperInfoDetails,
+  PupperInfoSection,
+} from "./PupperInfo.style.js";
+import Utils from "Utils";
 
-type Pupper = {
-    age:number,
-    name:string
-
+interface IPupperInfoProps {
+  pupper: Pupper;
+  getRandomPupper: MouseEventHandler<HTMLButtonElement>;
 }
-interface IPupperInfoProps{
-    pupper:Pupper
-}
-export default function PupperInfo(props:IPupperInfoProps) {
-
-    return (
-        <section className={"pupperInfo_section"}>
-
-            <div className={"pupperInfo_div"}>
-                {props.pupper.name}|
-                {props.pupper.age}
-
-            </div>
-        <img src={`http://localhost:8080/pupper/${props.pupper.name}/image`}/>
-        </section>
-    );
+export default function PupperInfo(props: IPupperInfoProps) {
+  return (
+    <PupperInfoSection>
+      <PupperInfoDetails>
+        {" "}
+        <NewPupperButton onClick={props.getRandomPupper}>
+          {" "}
+          <IoMdRefreshCircle color={Utils.GetCssVar("second-color")} />
+        </NewPupperButton>
+        {props.pupper.name}|{props.pupper.age}
+      </PupperInfoDetails>
+      <PupperImage
+        src={`http://localhost:8080/pupper/${props.pupper.name}/image`}
+      />
+    </PupperInfoSection>
+  );
 }
