@@ -13,3 +13,8 @@ export const PageTitle = styled.h1`
   padding: 0.5em;
   text-align: center;
 `;
+export const StyledSection = styled.section`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;

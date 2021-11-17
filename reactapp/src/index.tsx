@@ -2,11 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import { observable, configure, action } from "mobx";
 
+import reportWebVitals from "./reportWebVitals";
+import { PupperStoreProvider } from "src/Contexts/PupperStoreContext";
+
+configure({ enforceActions: "always" });
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PupperStoreProvider>
+      <App />
+    </PupperStoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

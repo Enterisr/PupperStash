@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Main.style";
 import PupperInfo from "./PupperInfo/PupperInfo";
 import PupperForm from "./PupperForm/PupperForm";
-import { PageTitle, MainStyle } from "./Main.style";
+import * as styled from "./Main.style";
+import PupperList from "./PupperList/PupperList";
 function Main() {
   const [watchedPupper, setWatchedPupper] = useState({ age: -1, name: "" });
   useEffect(() => {
@@ -16,12 +17,18 @@ function Main() {
   return (
     <>
       <header>
-        <PageTitle className={"title_h1"}>PupperHub</PageTitle>
+        <styled.PageTitle className={"title_h1"}>PupperHub</styled.PageTitle>
       </header>
-      <MainStyle>
-        <PupperInfo getRandomPupper={getRandomPupper} pupper={watchedPupper} />
+      <styled.MainStyle>
+        <styled.StyledSection>
+          <PupperList />
+          <PupperInfo
+            getRandomPupper={getRandomPupper}
+            pupper={watchedPupper}
+          />
+        </styled.StyledSection>
         <PupperForm />
-      </MainStyle>
+      </styled.MainStyle>
     </>
   );
 }

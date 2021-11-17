@@ -1,14 +1,16 @@
-import { observable, action } from "mobx";
+import { observable, action, makeObservable, makeAutoObservable } from "mobx";
 
 class PuppersStore {
   puppers: Array<Pupper | undefined> = [];
   constructor() {
-    this.puppers = [];
+    makeObservable(this, {
+      puppers: observable,
+    });
   }
   async getPuppers() {
     try {
       const answer = await fetch("http://localhost:8080/pupper/");
-      const puppers: Array<Pupper> = await answer.json();
+      const puppers: any = await answer.json();
       this.puppers = puppers;
     } catch (ex) {
       console.error(ex);
@@ -22,3 +24,4 @@ class PuppersStore {
     return chosenPupper;
   }
 }
+export default PuppersStore;

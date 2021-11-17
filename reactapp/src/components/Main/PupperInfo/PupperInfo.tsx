@@ -1,5 +1,5 @@
 import { IoMdRefreshCircle } from "react-icons/io";
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useContext } from "react";
 import "./PupperInfo.style.js";
 import {
   NewPupperButton,
@@ -7,13 +7,14 @@ import {
   PupperInfoDetails,
   PupperInfoSection,
 } from "./PupperInfo.style.js";
-import Utils from "Utils";
+import Utils from "src/Utils";
+import { observer } from "mobx-react";
 
 interface IPupperInfoProps {
   pupper: Pupper;
   getRandomPupper: MouseEventHandler<HTMLButtonElement>;
 }
-export default function PupperInfo(props: IPupperInfoProps) {
+function PupperInfo(props: IPupperInfoProps) {
   return (
     <PupperInfoSection>
       <PupperInfoDetails>
@@ -30,3 +31,4 @@ export default function PupperInfo(props: IPupperInfoProps) {
     </PupperInfoSection>
   );
 }
+export default observer(PupperInfo);
