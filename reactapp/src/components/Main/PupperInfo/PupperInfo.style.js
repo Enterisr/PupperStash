@@ -5,13 +5,21 @@ export const PupperInfoSection = styled.section`
   text-align: center;
   width: 30rem;
   height: 16em;
+  margin: auto;
   border-radius: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   border: none;
   box-shadow: 0px -1px 9px 1px #7f7f7f;
   font-size: 2rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  position: relative;
+  -ms-flex-direction: column;
   flex-direction: column;
-  justify-content: space-around;
 `;
 export const NewPupperButton = styled.button`
   background-color: inherit;
@@ -19,7 +27,6 @@ export const NewPupperButton = styled.button`
   border: none;
   border-radius: 0.7rem;
   font-weight: lighter;
-  font-family: Calibri;
   cursor: pointer;
   border: none;
   margin-right: auto;
@@ -40,8 +47,6 @@ export const NewPupperButton = styled.button`
 export const PupperInfoDetails = styled.div`
   margin-bottom: auto;
   display: flex;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
 
   padding: 0.5em;
 `;

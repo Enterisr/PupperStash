@@ -1,12 +1,14 @@
 package com.pupp.pupperapi.Models;
 
 import java.nio.file.Path;
+import java.util.List;
 
 public class Pupper {
     protected int Age;
     protected String Name;
     protected String ImagePath;
-
+    protected List<Video> Videos;
+    
     public Pupper() {
     }
 
