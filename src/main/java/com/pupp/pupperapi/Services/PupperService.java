@@ -14,10 +14,14 @@ import java.util.Random;
 
 @Service
 public class PupperService {
-    public List<Pupper> puppers= Arrays.asList(
+    public List<Pupper> puppers;
+    public PupperService(){
+         this.puppers= Arrays.asList(
             new Pupper(10,"riko","riko.jpg"),
             new Pupper(5,"Shula","Shula.jpg"),
             new Pupper(2,"Timor","Timor.jpg"));
+    }
+
 
     public Pupper GetRandomPupper(){
         Random r = new Random();

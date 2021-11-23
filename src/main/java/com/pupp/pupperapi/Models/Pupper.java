@@ -1,6 +1,5 @@
 package com.pupp.pupperapi.Models;
 
-import java.nio.file.Path;
 import java.util.List;
 
 public class Pupper {
