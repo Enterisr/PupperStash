@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 import com.pupp.pupperapi.Models.Video;
 import com.pupp.pupperapi.Services.VideoService;
@@ -24,7 +27,7 @@ public class VideoController {
             Video video = VideoService.getVideo(videoID);
             String videoPath = video.getPath();
             String fileExtension = StringUtils.getFilenameExtension(videoPath);
-            byte[] data = VideoService.GetVideoRange(video,0,(long)video.getLength()-1);
+            byte[] data = VideoService.GetVideo(video,0,(long)video.getLength()-1);
             return ResponseEntity.ok()
             .header("Content-Type","video/"+fileExtension)
             .header("Content-Length",String.valueOf((long)video.getLength()))
@@ -35,6 +38,13 @@ public class VideoController {
             ex.printStackTrace();
             return ResponseEntity.internalServerError().body(null);
         }
-}
-
+    }
+    @GetMapping("video")
+    public List<Video> GetVideoList(){
+       return VideoService.GetVideoList();
+    }
+    @GetMapping(value="video",params={"pupper"})
+    public List<Video> GetVideoList(@RequestParam String pupper){
+       return VideoService.GetVideoList(pupper);
+    }
 }

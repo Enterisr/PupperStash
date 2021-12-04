@@ -1,19 +1,29 @@
-import { PupperStoreContext } from "src/Contexts/PupperStoreContext";
+import {
+  PupperStoreContext,
+  PupperStoreProvider,
+} from "src/Contexts/PupperStoreContext";
 import React, { MouseEventHandler, useContext } from "react";
-import { StyledPupperList } from "./PupperList.style.js";
+import * as styled from "./PupperList.style.js";
+import Utils from "src/Utils";
+import { observer } from "mobx-react-lite";
 
-interface Iprops {}
-function PupperList(props: Iprops) {
+function PupperList() {
   const pupperStore = useContext(PupperStoreContext);
   return (
-    <StyledPupperList>
+    <styled.StyledPupperList>
       {pupperStore.puppers?.map((pupper) => (
         <li>
-          {pupper?.name} ({pupper?.age})
+          <styled.StyledPupperImg
+            src={
+              Utils.ResovleServerPath() + "pupper/" + pupper?.name + "/image"
+            }
+          />
+          <span className="pupperDetail_span">{pupper?.name}</span>{" "}
+          <span className="pupperDetail_span">({pupper?.age})</span>
         </li>
       ))}
-    </StyledPupperList>
+    </styled.StyledPupperList>
   );
 }
 
-export default PupperList;
+export default observer(PupperList);

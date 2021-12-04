@@ -24,15 +24,22 @@ public class VideoService {
         this.pupperService = pupperService;
         this.videos = Arrays.asList(new Video[]{
             new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\1.mp4","1",pupperService.puppers.get(0)),
-            new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\2.mp4","2",pupperService.puppers.get(0)),
+            new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\יובל המנוול.mp4","יובל המנוול",pupperService.puppers.get(0)),
+            new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\השכלה.mp4","השכלה",pupperService.puppers.get(1)),        
+            new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\something.mp4","something",pupperService.puppers.get(2)),
             new Video("C:\\Projects\\PupperStash\\src\\main\\java\\com\\pupp\\pupperapi\\assets\\Videos\\3.mp4","3",pupperService.puppers.get(0)),
         });
     }
 
     //TODO: Connect to a real DB
   
-
-    public byte[] GetVideoRange(Video video, long start,long end)  {
+    public List<Video> GetVideoList(){
+        return this.videos;
+    }
+    public List<Video> GetVideoList(String pupperName){
+        return this.videos.stream().filter(video->video.getPupper().getName().equals(pupperName)).toList();
+    }
+    public byte[] GetVideo(Video video, long start,long end)  {
         try{
             Path p =Path.of(video.getPath());
             InputStream inputStream = (Files.newInputStream(p));
@@ -58,7 +65,6 @@ public class VideoService {
         return videos.stream()
         .filter(video->video.getID().equals(videoID))
         .findFirst().get();
-         
 	}
 
 

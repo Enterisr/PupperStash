@@ -1,8 +1,12 @@
 package com.pupp.pupperapi.Models;
 
 import java.io.File;
+import java.util.Random;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.web.client.HttpServerErrorException.NotImplemented;
+
 
 public class Video {
     String ID;
@@ -10,7 +14,8 @@ public class Video {
     String Name;
     double Length;
     Pupper Pupper;
-    
+    int Seconds;
+
     public Video() {
 
     }
@@ -21,13 +26,22 @@ public class Video {
         this.Length = file.length();
         this.Name = file.getName();
         this.Pupper = Pupper;
+        this.Seconds =new Random().nextInt(10000)+1000;//TODO
+    }
+    public int getSeconds() {
+        return this.Seconds;
+    }
+
+    public void setSeconds(int Seconds) {
+        this.Seconds = Seconds;
     }
     public String getName(){
         return this.Name;
     }
     public void setName(String Name) throws NotImplemented{
         throw new UnsupportedOperationException();
-    }
+    }   
+    @JsonIgnore
     public String getPath() {
         return this.Path;
     }

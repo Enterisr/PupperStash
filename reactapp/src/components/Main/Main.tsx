@@ -4,33 +4,23 @@ import PupperInfo from "./PupperInfo/PupperInfo";
 import PupperForm from "./PupperForm/PupperForm";
 import * as styled from "./Main.style";
 import PupperList from "./PupperList/PupperList";
+import VideoGrid from "./VideoGrid/VideoGrid";
+import { observer } from "mobx-react";
 function Main() {
-  const [watchedPupper, setWatchedPupper] = useState({ age: -1, name: "" });
-  useEffect(() => {
-    getRandomPupper();
-  }, []);
-  function getRandomPupper() {
-    fetch("http://localhost:8080/pupper/random")
-      .then((responsePupper) => responsePupper.json())
-      .then((pupper) => setWatchedPupper(pupper));
-  }
   return (
     <>
       <header>
         <styled.PageTitle className={"title_h1"}>PupperHub</styled.PageTitle>
       </header>
       <styled.MainStyle>
-        <styled.StyledSection>
+        <styled.MainSection>
           <PupperList />
-          <PupperInfo
-            getRandomPupper={getRandomPupper}
-            pupper={watchedPupper}
-          />
-        </styled.StyledSection>
+          <VideoGrid />
+        </styled.MainSection>
         <PupperForm />
       </styled.MainStyle>
     </>
   );
 }
 
-export default Main;
+export default observer(Main);

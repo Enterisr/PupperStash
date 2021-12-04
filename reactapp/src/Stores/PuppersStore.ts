@@ -1,15 +1,29 @@
 import { observable, action, makeObservable, makeAutoObservable } from "mobx";
+import { Video } from "src/types/Video";
+
+import Utils from "../Utils";
 
 class PuppersStore {
   puppers: Array<Pupper | undefined> = [];
+  videos: Array<Video | undefined> = [];
   constructor() {
     makeObservable(this, {
       puppers: observable,
+      videos: observable,
     });
+  }
+  async getVidoes() {
+    try {
+      const ans = await fetch(Utils.ResovleServerPath() + "video");
+      const videos = await ans.json();
+      this.videos = videos;
+    } catch (ex) {
+      console.error(ex);
+    }
   }
   async getPuppers() {
     try {
-      const answer = await fetch("http://localhost:8080/pupper/");
+      const answer = await fetch(Utils.ResovleServerPath() + "pupper");
       const puppers: any = await answer.json();
       this.puppers = puppers;
     } catch (ex) {

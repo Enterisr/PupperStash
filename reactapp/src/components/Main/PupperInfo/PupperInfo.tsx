@@ -26,7 +26,7 @@ function PupperInfo(props: IPupperInfoProps) {
         {props.pupper.name}|{props.pupper.age}
       </PupperInfoDetails>
       <PupperImage
-        src={`http://localhost:8080/pupper/${props.pupper.name}/image`}
+        src={`${Utils.ResovleServerPath()}pupper/${props.pupper.name}/image`}
       />
     </PupperInfoSection>
   );

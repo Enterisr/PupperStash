@@ -1,14 +1,20 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
+export const StyledPupperImg = styled.img`
+  width: 3rem;
+  image-rendering: optimizeQuality;
+  border-radius: 50%;
+  height: 3rem;
+`;
 export const StyledPupperList = styled.ul`
   display: block;
   width: 18em;
-  height: calc(100% - 71px);
+  height: 100%;
   padding: 1em;
+  font-size: 1.2rem;
   background: #f5fdff;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  position: absolute;
   align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
@@ -19,6 +25,9 @@ export const StyledPupperList = styled.ul`
   li {
     text-align: center;
     width: 13em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
     color: rgb(40 44 52);
     border-radius: 10px;
@@ -29,9 +38,13 @@ export const StyledPupperList = styled.ul`
     -webkit-transition: ease 0.3s all;
     transition: ease 0.1s all;
     cursor: pointer;
+    height: 4.5rem;
     border: solid transparent 3px;
     &:hover {
       border: solid 3px var(--second-color);
+    }
+    .pupperDetail_span {
+      color: var(--second-color);
     }
   }
 `;
