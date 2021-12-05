@@ -7,6 +7,7 @@ import PupperList from "./PupperList/PupperList";
 import VideoGrid from "./VideoGrid/VideoGrid";
 import { observer } from "mobx-react";
 function Main() {
+  const [selectedPupper, setSelectedPupper] = useState();
   return (
     <>
       <header>
@@ -14,8 +15,14 @@ function Main() {
       </header>
       <styled.MainStyle>
         <styled.MainSection>
-          <PupperList />
-          <VideoGrid />
+          <PupperList
+            selectedPupper={selectedPupper}
+            setSelectedPupper={setSelectedPupper}
+          />
+          <VideoGrid
+            selectedPupper={selectedPupper}
+            setSelectedPupper={setSelectedPupper}
+          />
         </styled.MainSection>
         <PupperForm />
       </styled.MainStyle>

@@ -6,6 +6,7 @@ import Utils from "../Utils";
 class PuppersStore {
   puppers: Array<Pupper | undefined> = [];
   videos: Array<Video | undefined> = [];
+
   constructor() {
     makeObservable(this, {
       puppers: observable,

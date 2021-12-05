@@ -26,7 +26,7 @@ public class Video {
         this.Length = file.length();
         this.Name = file.getName();
         this.Pupper = Pupper;
-        this.Seconds =new Random().nextInt(10000)+1000;//TODO
+        this.Seconds =new Random().nextInt(10000)+100;//TODO
     }
     public int getSeconds() {
         return this.Seconds;

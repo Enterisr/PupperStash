@@ -5,6 +5,35 @@ export const StyledPupperImg = styled.img`
   border-radius: 50%;
   height: 3rem;
 `;
+export const StyledLi = styled.li`
+  text-align: center;
+  width: 13em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: rgb(40 44 52);
+  border-radius: 10px;
+  box-shadow: ${(props) =>
+    props.isSelected
+      ? "inset 0px 0px 0px 2px var(--second-color)"
+      : "0px 0px 24px -19px black"};
+  padding: 1em;
+  margin-top: 1em;
+  -webkit-transition: ease 0.3s all;
+  -webkit-transition: ease 0.3s all;
+  transition: ease 0.1s all;
+  cursor: pointer;
+  height: 4.5rem;
+  border: solid transparent 1px;
+  transform: ${(props) => (props.isSelected ? "translateX(1.3em)" : "")};
+  &:hover {
+    border: solid 1px var(--second-color);
+  }
+  .pupperDetail_span {
+    color: var(--second-color);
+  }
+`;
 export const StyledPupperList = styled.ul`
   display: block;
   width: 18em;
@@ -22,29 +51,4 @@ export const StyledPupperList = styled.ul`
   display: -ms-flexbox;
   display: flex;
   box-shadow: 0px 0px 15px -4px;
-  li {
-    text-align: center;
-    width: 13em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    color: rgb(40 44 52);
-    border-radius: 10px;
-    box-shadow: 0px 0px 24px -19px black;
-    padding: 1em;
-    margin-top: 1em;
-    -webkit-transition: ease 0.3s all;
-    -webkit-transition: ease 0.3s all;
-    transition: ease 0.1s all;
-    cursor: pointer;
-    height: 4.5rem;
-    border: solid transparent 3px;
-    &:hover {
-      border: solid 3px var(--second-color);
-    }
-    .pupperDetail_span {
-      color: var(--second-color);
-    }
-  }
 `;
