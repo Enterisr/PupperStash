@@ -6,12 +6,18 @@ import Utils from "../Utils";
 class PuppersStore {
   puppers: Array<Pupper | undefined> = [];
   videos: Array<Video | undefined> = [];
+  selectedVideo: Video | null = null;
 
   constructor() {
     makeObservable(this, {
       puppers: observable,
       videos: observable,
+      selectedVideo: observable,
+      setSelectedVideo: action,
     });
+  }
+  setSelectedVideo(video: Video | null) {
+    this.selectedVideo = video;
   }
   async getVidoes() {
     try {

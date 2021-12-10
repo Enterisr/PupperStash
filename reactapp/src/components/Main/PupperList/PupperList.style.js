@@ -7,13 +7,13 @@ export const StyledPupperImg = styled.img`
 `;
 export const StyledLi = styled.li`
   text-align: center;
-  width: 13em;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   color: rgb(40 44 52);
-  border-radius: 10px;
+  border-radius: ${(props) => (props.isSelected ? "0" : "10px")};
   box-shadow: ${(props) =>
     props.isSelected
       ? "inset 0px 0px 0px 2px var(--second-color)"
@@ -26,7 +26,7 @@ export const StyledLi = styled.li`
   cursor: pointer;
   height: 4.5rem;
   border: solid transparent 1px;
-  transform: ${(props) => (props.isSelected ? "translateX(1.3em)" : "")};
+  transform: ${(props) => (props.isSelected ? "translateX(25%)" : "")};
   &:hover {
     border: solid 1px var(--second-color);
   }

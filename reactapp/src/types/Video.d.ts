@@ -1,6 +1,6 @@
 import Pupper from "./Pupper";
 type Video = {
-  ID: string;
+  id: string;
   name: string;
   length: number;
   pupper: Pupper;

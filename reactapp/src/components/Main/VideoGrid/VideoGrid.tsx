@@ -4,6 +4,7 @@ import { PupperStoreContext } from "src/Contexts/PupperStoreContext";
 import Utils from "src/Utils";
 import * as Styled from "./VideoGrid.style.js";
 import * as GeneralStyle from "src/GeneralStyle.style";
+import useNavigateToVideo from "../useNavigateToVideo";
 interface Iprops {
   selectedPupper: Pupper | undefined;
   setSelectedPupper: Function;
@@ -14,11 +15,19 @@ function VideoGrid(props: Iprops) {
     (vid) =>
       vid?.pupper.name === props.selectedPupper?.name || !props.selectedPupper
   );
+  useNavigateToVideo();
   return (
     <Styled.StyledVideoGrid>
       {selectedVidoes?.map((video) => {
         return (
-          <Styled.StyledVideoTile>
+          <Styled.StyledVideoTile
+            onClick={() =>
+              video &&
+              pupperStore &&
+              pupperStore.setSelectedVideo &&
+              pupperStore.setSelectedVideo(video)
+            }
+          >
             <GeneralStyle.secondTitle>
               {video?.name && Utils.GetFilenameWithoutExtension(video?.name)}
             </GeneralStyle.secondTitle>
